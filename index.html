@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leticia Alfaro - Consultorio Psicoterapéutico Bienestar Integral</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==================== RESET Y ESTILOS GLOBALES ==================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: #2c3e50;
+            background-color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* ==================== TIPOGRAFÍA ==================== */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        /* ==================== HEADER ==================== */
+        header {
+            background: linear-gradient(135deg, #ffffff 0%, #f0f9fb 100%);
+            border-bottom: 3px solid #d4ebf5;
+            padding: 1.5rem 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            animation: slideDown 0.5s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .logo {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .logo h1 {
+            font-size: 1.6rem;
+            background: linear-gradient(135deg, #6c9ba8 0%, #4a7a8f 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            line-height: 1.2;
+            margin: 0;
+            letter-spacing: -1px;
+        }
+
+        .logo p {
+            font-size: 0.85rem;
+            color: #7a9ca8;
+            margin: 0.35rem 0 0 0;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        nav {
+            display: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 600;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #6c9ba8;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: #6c9ba8;
+        }
+
+        /* ==================== SECCIÓN HERO ==================== */
+        .hero {
+            background: linear-gradient(135deg, #f5fbfc 0%, #e8f5f9 50%, #f0f9fb 100%);
+            padding: 4rem 1rem 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(212, 235, 245, 0.4) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(172, 216, 230, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h2 {
+            font-size: 2.8rem;
+            color: #2c3e50;
+            margin-bottom: 0.8rem;
+            font-weight: 800;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            color: #5a7a8f;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            font-weight: 500;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        /* Servicios en grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.2rem;
+            margin-top: 2.5rem;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        .service-card {
+            background-color: #ffffff;
+            border: 2px solid #d4ebf5;
+            border-radius: 16px;
+            padding: 1.8rem 1.2rem;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 4px 15px rgba(108, 155, 168, 0.08);
+            position: relative;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #6c9ba8, #acd8e6);
+            border-radius: 16px 16px 0 0;
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            border-color: #6c9ba8;
+            box-shadow: 0 12px 35px rgba(108, 155, 168, 0.2);
+            transform: translateY(-8px);
+        }
+
+        .service-card h3 {
+            font-size: 1.1rem;
+            color: #2c3e50;
+            margin: 0;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
+        .service-card:hover h3 {
+            color: #6c9ba8;
+        }
+
+        .service-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #d4ebf5, #acd8e6);
+            border-radius: 50%;
+            margin: 0 auto 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.6rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            background: linear-gradient(135deg, #6c9ba8, #4a7a8f);
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        /* ==================== SECCIÓN MOTIVACIONAL ==================== */
+        .motivation-section {
+            background: linear-gradient(135deg, #d4ebf5 0%, #acd8e6 50%, #c5e3eb 100%);
+            padding: 4rem 1rem 3.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .motivation-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(255,255,255,0.15) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .motivation-container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .motivation-title {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            animation: fadeInUp 0.8s ease-out both;
+        }
+
+        .motivation-box {
+            background-color: #ffffff;
+            border-left: 6px solid #6c9ba8;
+            border-radius: 16px;
+            padding: 2.2rem 1.8rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .motivation-box::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(108, 155, 168, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .motivation-box p {
+            font-size: 0.98rem;
+            color: #2c3e50;
+            line-height: 2;
+            margin: 0;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+            letter-spacing: 0.3px;
+        }
+
+        /* ==================== SECCIÓN CONTACTO ==================== */
+        .contact-section {
+            background: linear-gradient(135deg, #f5fbfc 0%, #ffffff 50%, #f0f9fb 100%);
+            padding: 4rem 1rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-section h2 {
+            font-size: 2.3rem;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            font-weight: 800;
+            animation: fadeInUp 0.8s ease-out both;
+        }
+
+        .professional-card {
+            background-color: #ffffff;
+            border: 3px solid #d4ebf5;
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 40px rgba(108, 155, 168, 0.12);
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .professional-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 235, 245, 0.1) 0%, transparent 70%);
+            transform: rotate(45deg);
+            pointer-events: none;
+        }
+
+        .professional-card:hover {
+            border-color: #6c9ba8;
+            box-shadow: 0 15px 50px rgba(108, 155, 168, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .professional-card h3 {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 0.3rem;
+            font-weight: 800;
+            position: relative;
+            z-index: 1;
+        }
+
+        .professional-title {
+            font-size: 0.95rem;
+            color: #6c9ba8;
+            margin-bottom: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.2rem;
+            padding: 1rem;
+            background: linear-gradient(135deg, #f0f9fb, #e8f5f9);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: linear-gradient(135deg, #d4ebf5, #c5e3eb);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #6c9ba8, #4a7a8f);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            font-weight: bold;
+            flex-shrink: 0;
+            box-shadow: 0 4px 15px rgba(108, 155, 168, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover .contact-icon {
+            transform: scale(1.1) rotate(-5deg);
+            box-shadow: 0 6px 20px rgba(108, 155, 168, 0.4);
+        }
+
+        .contact-icon::before {
+            content: "☎";
+        }
+
+        .contact-text {
+            text-align: left;
+        }
+
+        .contact-text p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #7a9ca8;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .contact-text span {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            font-weight: 800;
+            display: block;
+            margin-top: 0.3rem;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #6c9ba8 0%, #4a7a8f 100%);
+            color: #ffffff;
+            padding: 1.1rem 2.8rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-top: 1.8rem;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(108, 155, 168, 0.3);
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.4s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(108, 155, 168, 0.4);
+        }
+
+        .cta-button:active {
+            transform: translateY(-1px);
+        }
+
+        /* ==================== FOOTER ==================== */
+        footer {
+            background: linear-gradient(135deg, #4a7a8f 0%, #2c5a71 100%);
+            color: #ffffff;
+            text-align: center;
+            padding: 2.5rem 1rem;
+            margin-top: 0;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+            opacity: 0.95;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        /* ==================== RESPONSIVE DESIGN ==================== */
+        @media (min-width: 768px) {
+            .header-container {
+                flex-wrap: nowrap;
+            }
+
+            nav {
+                display: block;
+            }
+
+            .logo h1 {
+                font-size: 1.9rem;
+            }
+
+            .hero {
+                padding: 5rem 1rem 4rem;
+            }
+
+            .hero h2 {
+                font-size: 3.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .hero p {
+                font-size: 1.15rem;
+                margin-bottom: 3rem;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
+                margin-top: 2.5rem;
+            }
+
+            .service-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .motivation-title {
+                font-size: 2.4rem;
+                margin-bottom: 2rem;
+            }
+
+            .motivation-box {
+                padding: 2.8rem 2.5rem;
+            }
+
+            .motivation-box p {
+                font-size: 1rem;
+            }
+
+            .contact-section h2 {
+                font-size: 2.8rem;
+            }
+
+            .contact-item {
+                flex-direction: row;
+                justify-content: flex-start;
+                gap: 1.5rem;
+            }
+
+            .professional-card {
+                padding: 3rem 3.5rem;
+            }
+
+            .professional-card h3 {
+                font-size: 1.7rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .hero h2 {
+                font-size: 4rem;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .hero {
+                padding: 6rem 2rem 5rem;
+            }
+
+            .motivation-section {
+                padding: 5rem 2rem;
+            }
+
+            .contact-section {
+                padding: 5rem 2rem;
+            }
+        }
+
+        /* ==================== ACCESIBILIDAD ==================== */
+        .service-icon::before {
+            content: "✓";
+            font-size: 18px;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        .service-card:hover .service-icon::before {
+            animation: bounce 0.4s ease;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+        }
+
+        /* Asegurar legibilidad en todos los tamaños */
+        @media (max-width: 480px) {
+            .logo h1 {
+                font-size: 1.3rem;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 0.95rem;
+            }
+
+            .motivation-title {
+                font-size: 1.6rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .contact-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .professional-card {
+                padding: 1.8rem 1.2rem;
+            }
+
+            .professional-card h3 {
+                font-size: 1.3rem;
+            }
+
+            .cta-button {
+                padding: 0.95rem 2rem;
+                font-size: 0.95rem;
+                margin-top: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ==================== HEADER ==================== -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <h1>Lic. Leticia Alfaro</h1>
+                <p>Consultorio Psicoterapéutico Bienestar Integral</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <main>
+        <!-- SECCIÓN HERO -->
+        <section class="hero" id="inicio">
+            <div class="hero-container">
+                <h2>Terapia Psicológica</h2>
+                <p>Acompañamiento profesional para tu bienestar emocional y mental</p>
+                
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon"></div>
+                        <h3>Terapia Individual</h3>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"></div>
+                        <h3>Terapia de Pareja</h3>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"></div>
+                        <h3>Estrés</h3>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"></div>
+                        <h3>Ansiedad</h3>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"></div>
+                        <h3>Depresión</h3>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"></div>
+                        <h3>Desórdenes Alimenticios</h3>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"></div>
+                        <h3>Problemas de Adicción</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN MOTIVACIONAL -->
+        <section class="motivation-section">
+            <div class="motivation-container">
+                <h2 class="motivation-title">QUE ESTE MOMENTO</h2>
+                <div class="motivation-box">
+                    <p>CUANTAS VECES TE HICISTE A UN LADO O NO TE PRIORIZASTE POR PENSAR EN 3 ROS. PUES ES HORA DE CUIDARTE, TU SALUD MENTAL Y EMOCIONAL TAMBIÉN IMPORTA.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN CONTACTO -->
+        <section class="contact-section" id="contacto">
+            <div class="contact-container">
+                <h2>Contáctame</h2>
+                
+                <div class="professional-card">
+                    <h3>Msc. Lic. Leticia Alfaro Ramirez</h3>
+                    <p class="professional-title">Psicóloga Clínica</p>
+                    
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon"></div>
+                            <div class="contact-text">
+                                <p>WhatsApp</p>
+                                <span>73078953</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="https://wa.me/59173078953?text=Hola%2C%20quisiera%20agendar%20una%20cita%20con%20Leticia%20Alfaro" class="cta-button" target="_blank">Agenda tu Cita</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer>
+        <p>&copy; 2026 Leticia Alfaro - Consultorio Psicoterapéutico Bienestar Integral. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
